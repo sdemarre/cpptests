@@ -20,15 +20,15 @@ public:
   }
 };
 
-void f(const Data& data)
+void f(std::unique_ptr<Data> data)
 {
-  std::cout << "  f(), content of data is [" << data.getI() << "];" << std::endl;
+  std::cout << "  f(), content of data is [" << data->getI() << "];" << std::endl;
 }
-
-
 
 int main()
 {
-  f(*Factory::MakeData(3));
+  f(Factory::MakeData(3));
+  std::unique_ptr<Data> d2(Factory::MakeData(8));
+  f(d2);
   return 0;
 }

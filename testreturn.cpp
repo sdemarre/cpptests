@@ -1,3 +1,4 @@
+#include <string>
 #include <functional>
 #include <iostream>
 
@@ -15,12 +16,14 @@ class EntryExitLogger : public ScopedCalls
 {
 public:
 	EntryExitLogger(const std::string& functionName, StringFun entryMsgFun = 0, StringFun exitMsgFun = 0) : 
-		ScopedCalls([=]() {
-				std::cout << functionName << ((entryMsgFun != 0) ? (std::string("[") + entryMsgFun() + "]") : std::string("")) << ": entry" << std::endl;
-			},
-			[=]() {
+		ScopedCalls([=]()
+			    {
+			      std::cout << functionName << ((entryMsgFun != 0) ? (std::string("[") + entryMsgFun() + "]") : std::string("")) << ": entry" << std::endl;
+			    },
+			[=]()
+			    {
 				std::cout << functionName << ((exitMsgFun != 0) ? (std::string("[") + exitMsgFun() + "]") : std::string("")) << ": return" << std::endl;
-			}) {};
+			    }) {};
 };
 
 static StringFun BoolStringRep(bool& b)
