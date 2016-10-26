@@ -4,3 +4,5 @@
 *.stackdump
 *.o
 *.obj
+*.pdb
+*.ilk
