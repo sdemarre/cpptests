@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 struct B {
   B() : m_nr(17) { std::cout << "Calling B()" << std::endl; }
@@ -21,6 +22,30 @@ struct A {
 };
 
 
+class Q {
+public:
+  Q() { std::cout << "In Q::Q()" << std::endl; }
+};
+
+class I {
+public:
+  virtual int doI() = 0;
+};
+
+
+class P : public I, public Q{
+public:
+  P(int i)  : m_i(i) {}
+  virtual int doI() override;
+private:
+  int m_i;
+};
+
+int P::doI()
+{
+  std::cout << "m_i == " << m_i << std::endl;
+  return 1;
+}
 int main()
 {
   A<B> a;
@@ -28,4 +53,7 @@ int main()
 	    << "a.m_b = " << a.m_b << std::endl
 	    << "a.m_data.m_nr = " << a.m_data.m_nr << std::endl
 	    << "a.m_c.m_q = " << a.m_c.m_q << std::endl;
+
+  P p(3);
+  p.doI();
 }

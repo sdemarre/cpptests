@@ -1,16 +1,15 @@
 #include <iostream>
 
-int fib(int n)
+int fib(int n,int j)
 {
   if (n < 2) {
     return n;
   } else {
-    return fib(n-1) + fib(n-2);
+    return fib(n-1,j) + fib(n-2,j);
   }
 }
 
 int main()
 {
-  for (unsigned int i = 0; i < 10; ++i)
-    std::cout << "fib(40) = " << fib(42) << std::endl;
+  std::cout << "fib(42) = " << fib(42,42) << std::endl;
 }

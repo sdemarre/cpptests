@@ -4,6 +4,7 @@
 typedef std::function<void(int)> IntHandler;
 void f(IntHandler p = IntHandler())
 {
+  p(5);
   if (p) {
     p(3);
   } else {
