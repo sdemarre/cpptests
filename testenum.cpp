@@ -2,6 +2,17 @@
 #include <iostream>
 #include <algorithm>
 
+
+class A {
+public:
+  enum AE { ONE, TWO, THREE };
+  A() :m_ae{ONE} {}
+  AE getAE() const { return m_ae; }
+private:
+  AE m_ae;
+};
+
+
 void f()
 {
   enum Blah { One = 0, Two, Three } ;
@@ -27,4 +38,11 @@ void f()
 int main()
 {
   f();
+  std::cout << std::endl;
+
+  A a;
+  std::cout << a.getAE() << std::endl;
+  A b;
+  std::cout << b.getAE() << std::endl;
+
 }

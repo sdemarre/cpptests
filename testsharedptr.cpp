@@ -13,7 +13,7 @@ private:
 class Container {
 public:
   Container(std::shared_ptr<Data> d) : m_data(d) { std::cout << "Creating Container@" << this << std::endl; }
-  ~Container() { std::cout << "Destrying Container@" << this << std::endl; }
+  ~Container() { std::cout << "Destroying Container@" << this << std::endl; }
 private:
   std::shared_ptr<Data> m_data;
 };
